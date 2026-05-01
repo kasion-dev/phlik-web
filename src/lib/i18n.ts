@@ -30,6 +30,22 @@ interface Strings {
   appTitle: string;
   tagline: string;
   hero: string;
+  heroSub: string;
+  freeBetaPill: string;
+  multiLangPill: string;
+  cardResumeTitle: string;
+  cardResumeDesc: string;
+  cardInterviewTitle: string;
+  cardInterviewDesc: string;
+  cardJournalTitle: string;
+  cardJournalDesc: string;
+  ctaOpen: string;
+  installBannerTitle: string;
+  installBannerSub: string;
+  navResume: string;
+  navInterview: string;
+  navJournal: string;
+  footerStudio: string;
   ctaResume: string;
   ctaInterview: string;
   ctaJournal: string;
@@ -72,7 +88,23 @@ const STRINGS: Record<Lang, Strings> = {
   th: {
     appTitle: 'พลิกอาชีพ',
     tagline: 'AI ช่วยพลิกอาชีพ — ไม่ใช่บอกให้ลาออก',
-    hero: 'ขัดเรซูเม่ · ฝึกสัมภาษณ์ · จดบันทึกอาชีพ — ทุกอย่างฟรีในช่วงเบต้า',
+    hero: 'AI ช่วยพลิกอาชีพ — ไม่ใช่บอกให้ลาออก',
+    heroSub: 'ขัดเรซูเม่ · ฝึกสัมภาษณ์ · จดบันทึกอาชีพ — AI เดียวกันกับแอปมือถือ ไม่ต้องติดตั้ง',
+    freeBetaPill: 'ฟรีช่วงเบต้า',
+    multiLangPill: '🇹🇭 TH · 🇬🇧 EN · 🇲🇽 ES · 🇨🇳 ZH',
+    cardResumeTitle: 'ขัดเรซูเม่',
+    cardResumeDesc: 'วาง bullet → AI เขียนใหม่ พร้อมคะแนน ATS + ปรับโทน',
+    cardInterviewTitle: 'ฝึกสัมภาษณ์',
+    cardInterviewDesc: 'ตำแหน่ง + อุตสาหกรรม → 20 คำถามพร้อมตัวอย่างคำตอบ',
+    cardJournalTitle: 'บันทึกอาชีพ',
+    cardJournalDesc: 'จดบันทึก 5 นาที — อารมณ์ + เหตุการณ์ → AI สะท้อนภาพรวม',
+    ctaOpen: 'เปิด →',
+    installBannerTitle: 'อยากใช้ออฟไลน์ + แจ้งเตือนแบบ push?',
+    installBannerSub: 'แอป Android มี AI เดียวกัน + แจ้งเตือนเมื่อผลลัพธ์เสร็จ',
+    navResume: 'เรซูเม่',
+    navInterview: 'สัมภาษณ์',
+    navJournal: 'บันทึก',
+    footerStudio: 'แอปจาก Kasion',
     ctaResume: 'ขัดเรซูเม่',
     ctaInterview: 'ฝึกสัมภาษณ์',
     ctaJournal: 'บันทึกอาชีพ',
@@ -112,8 +144,24 @@ const STRINGS: Record<Lang, Strings> = {
   },
   en: {
     appTitle: 'Phlik Career',
-    tagline: "AI to help you switch jobs — not to talk you into quitting",
-    hero: 'Polish your resume · prep for interviews · journal your career — free during beta',
+    tagline: 'AI to help you switch jobs — not to talk you into quitting',
+    hero: 'AI to help you switch jobs — not to talk you into quitting',
+    heroSub: 'Polish your resume · prep for interviews · journal your career. Same AI as the mobile app, no install needed.',
+    freeBetaPill: 'free during beta',
+    multiLangPill: '🇹🇭 TH · 🇬🇧 EN · 🇲🇽 ES · 🇨🇳 ZH',
+    cardResumeTitle: 'Polish resume',
+    cardResumeDesc: 'Drop bullets → AI rewrites with ATS scoring + tone control.',
+    cardInterviewTitle: 'Interview prep',
+    cardInterviewDesc: 'Role + industry → 20 likely questions with sample answers.',
+    cardJournalTitle: 'Career journal',
+    cardJournalDesc: '5-minute reflection. Mood + event → AI sees the pattern.',
+    ctaOpen: 'open →',
+    installBannerTitle: 'Want offline + push notifications?',
+    installBannerSub: 'The Android app has the same AI plus background notifications when results are ready.',
+    navResume: 'resume',
+    navInterview: 'interview',
+    navJournal: 'journal',
+    footerStudio: 'a Kasion app',
     ctaResume: 'Polish resume',
     ctaInterview: 'Interview prep',
     ctaJournal: 'Career journal',
@@ -154,7 +202,23 @@ const STRINGS: Record<Lang, Strings> = {
   es: {
     appTitle: 'Phlik Career',
     tagline: 'IA que te ayuda a cambiar de trabajo — no te dice que renuncies',
-    hero: 'Pulir CV · prep entrevistas · diario de carrera — gratis en beta',
+    hero: 'IA que te ayuda a cambiar de trabajo — no te dice que renuncies',
+    heroSub: 'Pulir CV · prep entrevistas · diario de carrera. Misma IA que la app móvil, sin instalación.',
+    freeBetaPill: 'gratis en beta',
+    multiLangPill: '🇹🇭 TH · 🇬🇧 EN · 🇲🇽 ES · 🇨🇳 ZH',
+    cardResumeTitle: 'Pulir CV',
+    cardResumeDesc: 'Pega bullets → IA reescribe con puntaje ATS + control de tono.',
+    cardInterviewTitle: 'Prep entrevista',
+    cardInterviewDesc: 'Rol + industria → 20 preguntas probables con respuestas modelo.',
+    cardJournalTitle: 'Diario de carrera',
+    cardJournalDesc: 'Reflexión de 5 min. Ánimo + evento → IA ve el patrón.',
+    ctaOpen: 'abrir →',
+    installBannerTitle: '¿Quieres offline + notificaciones push?',
+    installBannerSub: 'La app de Android tiene la misma IA más notificaciones cuando los resultados están listos.',
+    navResume: 'cv',
+    navInterview: 'entrevista',
+    navJournal: 'diario',
+    footerStudio: 'una app de Kasion',
     ctaResume: 'Pulir CV',
     ctaInterview: 'Prep entrevista',
     ctaJournal: 'Diario',
@@ -195,7 +259,23 @@ const STRINGS: Record<Lang, Strings> = {
   zh: {
     appTitle: '翻转职涯',
     tagline: 'AI 助你换工作 — 不是劝你辞职',
-    hero: '润色简历 · 面试准备 · 职涯日志 — 测试期免费',
+    hero: 'AI 助你换工作 — 不是劝你辞职',
+    heroSub: '润色简历 · 面试准备 · 职涯日志。和手机 App 一样的 AI,免安装。',
+    freeBetaPill: '测试期免费',
+    multiLangPill: '🇹🇭 TH · 🇬🇧 EN · 🇲🇽 ES · 🇨🇳 ZH',
+    cardResumeTitle: '润色简历',
+    cardResumeDesc: '粘贴要点 → AI 重写,带 ATS 评分 + 语气调整。',
+    cardInterviewTitle: '面试准备',
+    cardInterviewDesc: '职位 + 行业 → 20 个可能的问题加范例答案。',
+    cardJournalTitle: '职涯日志',
+    cardJournalDesc: '5 分钟反思。心情 + 事件 → AI 看出规律。',
+    ctaOpen: '打开 →',
+    installBannerTitle: '想要离线 + Push 通知?',
+    installBannerSub: 'Android App 有同样的 AI 加上结果就绪时的通知。',
+    navResume: '简历',
+    navInterview: '面试',
+    navJournal: '日志',
+    footerStudio: 'Kasion 的应用',
     ctaResume: '润色简历',
     ctaInterview: '面试准备',
     ctaJournal: '职涯日志',
