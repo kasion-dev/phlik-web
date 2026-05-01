@@ -1,0 +1,24 @@
+{
+  "name": "phlik-web",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Phlik Career — web companion. Same brand, same backend (ai-router), no app-store friction.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "deploy": "astro build && wrangler deploy",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/svelte": "^7.0.0",
+    "astro": "^5.0.0",
+    "svelte": "^5.0.0",
+    "typescript": "^5.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0"
+  }
+}

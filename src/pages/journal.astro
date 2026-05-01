@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Journal from '../components/Journal.svelte';
+---
+
+<Layout title="Career journal · Phlik Career">
+  <section class="px-6 md:px-10 py-10">
+    <Journal client:load />
+  </section>
+</Layout>
