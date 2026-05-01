@@ -2,22 +2,40 @@
   import { onMount } from 'svelte';
   import { AiClient } from '../lib/ai_client';
   import { detectLang, t, type Lang } from '../lib/i18n';
+  import {
+    loadHistory,
+    saveHistoryEntry,
+    type HistoryEntry,
+  } from '../lib/history';
+  import { renderMarkdown } from '../lib/render';
+  import HistoryPanel from './HistoryPanel.svelte';
+
+  type Mood = 'great' | 'ok' | 'meh' | 'down' | 'bad';
+
+  interface Input {
+    mood: Mood;
+    event: string;
+  }
 
   let lang: Lang = 'en';
   let strings = t(lang);
-  let mood: 'great' | 'ok' | 'meh' | 'down' | 'bad' = 'ok';
+  let mood: Mood = 'ok';
   let event = '';
   let loading = false;
   let result = '';
   let error = '';
   let copied = false;
+  let history: HistoryEntry<Input>[] = [];
+
+  $: html = result ? renderMarkdown(result) : '';
 
   onMount(() => {
     lang = detectLang();
     strings = t(lang);
+    history = loadHistory<Input>('journal');
   });
 
-  const moods: { id: typeof mood; emoji: string; labels: Record<Lang, string> }[] = [
+  const moods: { id: Mood; emoji: string; labels: Record<Lang, string> }[] = [
     { id: 'great', emoji: '🤩', labels: { th: 'ดีมาก', en: 'Great', es: 'Genial', zh: '很棒' } },
     { id: 'ok', emoji: '🙂', labels: { th: 'OK', en: 'OK', es: 'OK', zh: 'OK' } },
     { id: 'meh', emoji: '😐', labels: { th: 'เฉยๆ', en: 'Meh', es: 'Regular', zh: '一般' } },
@@ -40,11 +58,29 @@
         lang,
       });
       result = res.output;
+      const moodLabel = moods.find((m) => m.id === mood)?.emoji ?? mood;
+      saveHistoryEntry<Input>('journal', {
+        label: `${moodLabel} ${event.slice(0, 60)}${event.length > 60 ? '…' : ''}`,
+        output: result,
+        input: { mood, event },
+      });
+      history = loadHistory<Input>('journal');
     } catch (e) {
       error = `${strings.errorPrefix}: ${e instanceof Error ? e.message : String(e)}`;
     } finally {
       loading = false;
     }
+  }
+
+  function loadEntry(entry: HistoryEntry<Input>) {
+    mood = entry.input.mood;
+    event = entry.input.event;
+    result = entry.output;
+    error = '';
+  }
+
+  function refreshHistory() {
+    history = loadHistory<Input>('journal');
   }
 
   async function copyResult() {
@@ -124,7 +160,17 @@
           {copied ? strings.copied : strings.copy}
         </button>
       </div>
-      <pre class="whitespace-pre-wrap text-sm text-ink-100 leading-relaxed font-sans">{result}</pre>
+      <div class="prose-output">{@html html}</div>
     </div>
   {/if}
+
+  <div class="mt-8">
+    <HistoryPanel
+      feature="journal"
+      {lang}
+      entries={history}
+      onLoad={loadEntry}
+      onChange={refreshHistory}
+    />
+  </div>
 </section>

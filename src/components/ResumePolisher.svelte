@@ -2,6 +2,20 @@
   import { onMount } from 'svelte';
   import { AiClient } from '../lib/ai_client';
   import { detectLang, t, type Lang } from '../lib/i18n';
+  import {
+    loadHistory,
+    saveHistoryEntry,
+    type HistoryEntry,
+  } from '../lib/history';
+  import { renderMarkdown } from '../lib/render';
+  import HistoryPanel from './HistoryPanel.svelte';
+
+  interface Input {
+    currentRole: string;
+    targetRole: string;
+    bulletsText: string;
+    tone: 'professional' | 'casual';
+  }
 
   let lang: Lang = 'en';
   let strings = t(lang);
@@ -13,10 +27,14 @@
   let result = '';
   let error = '';
   let copied = false;
+  let history: HistoryEntry<Input>[] = [];
+
+  $: html = result ? renderMarkdown(result) : '';
 
   onMount(() => {
     lang = detectLang();
     strings = t(lang);
+    history = loadHistory<Input>('resume');
   });
 
   async function polish() {
@@ -40,11 +58,30 @@
         lang,
       });
       result = res.output;
+      saveHistoryEntry<Input>('resume', {
+        label: `${currentRole || '?'} → ${targetRole || '?'}`,
+        output: result,
+        input: { currentRole, targetRole, bulletsText, tone },
+      });
+      history = loadHistory<Input>('resume');
     } catch (e) {
       error = `${strings.errorPrefix}: ${e instanceof Error ? e.message : String(e)}`;
     } finally {
       loading = false;
     }
+  }
+
+  function loadEntry(entry: HistoryEntry<Input>) {
+    currentRole = entry.input.currentRole;
+    targetRole = entry.input.targetRole;
+    bulletsText = entry.input.bulletsText;
+    tone = entry.input.tone;
+    result = entry.output;
+    error = '';
+  }
+
+  function refreshHistory() {
+    history = loadHistory<Input>('resume');
   }
 
   async function copyResult() {
@@ -155,7 +192,17 @@
           {copied ? strings.copied : strings.copy}
         </button>
       </div>
-      <pre class="whitespace-pre-wrap text-sm text-ink-100 leading-relaxed font-sans">{result}</pre>
+      <div class="prose-output">{@html html}</div>
     </div>
   {/if}
+
+  <div class="mt-8">
+    <HistoryPanel
+      feature="resume"
+      {lang}
+      entries={history}
+      onLoad={loadEntry}
+      onChange={refreshHistory}
+    />
+  </div>
 </section>

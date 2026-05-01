@@ -82,6 +82,15 @@ interface Strings {
   langLabel: string;
   betaPill: string;
   freeBeta: string;
+  historyTitle: string;
+  historyEmpty: string;
+  historyLoad: string;
+  historyDelete: string;
+  historyClear: string;
+  questionLabel: string;
+  sampleAnswerLabel: string;
+  showSample: string;
+  hideSample: string;
 }
 
 const STRINGS: Record<Lang, Strings> = {
@@ -141,6 +150,15 @@ const STRINGS: Record<Lang, Strings> = {
     langLabel: 'ภาษา',
     betaPill: 'beta',
     freeBeta: 'ฟรีช่วงเบต้า · ไม่ต้องสมัครสมาชิก',
+    historyTitle: 'ประวัติ',
+    historyEmpty: 'ยังไม่มีประวัติ',
+    historyLoad: 'เปิด',
+    historyDelete: 'ลบ',
+    historyClear: 'ล้างทั้งหมด',
+    questionLabel: 'คำถาม',
+    sampleAnswerLabel: 'ตัวอย่างคำตอบ',
+    showSample: 'ดูคำตอบ',
+    hideSample: 'ซ่อนคำตอบ',
   },
   en: {
     appTitle: 'Phlik Career',
@@ -198,6 +216,15 @@ const STRINGS: Record<Lang, Strings> = {
     langLabel: 'Language',
     betaPill: 'beta',
     freeBeta: 'Free during beta · no signup required',
+    historyTitle: 'History',
+    historyEmpty: 'No history yet',
+    historyLoad: 'Open',
+    historyDelete: 'Delete',
+    historyClear: 'Clear all',
+    questionLabel: 'Question',
+    sampleAnswerLabel: 'Sample answer',
+    showSample: 'Show answer',
+    hideSample: 'Hide answer',
   },
   es: {
     appTitle: 'Phlik Career',
@@ -255,6 +282,15 @@ const STRINGS: Record<Lang, Strings> = {
     langLabel: 'Idioma',
     betaPill: 'beta',
     freeBeta: 'Gratis en beta · sin registro',
+    historyTitle: 'Historial',
+    historyEmpty: 'Sin historial',
+    historyLoad: 'Abrir',
+    historyDelete: 'Eliminar',
+    historyClear: 'Limpiar todo',
+    questionLabel: 'Pregunta',
+    sampleAnswerLabel: 'Respuesta modelo',
+    showSample: 'Ver respuesta',
+    hideSample: 'Ocultar respuesta',
   },
   zh: {
     appTitle: '翻转职涯',
@@ -312,6 +348,15 @@ const STRINGS: Record<Lang, Strings> = {
     langLabel: '语言',
     betaPill: '测试',
     freeBeta: '测试期免费 · 无需注册',
+    historyTitle: '历史记录',
+    historyEmpty: '暂无记录',
+    historyLoad: '打开',
+    historyDelete: '删除',
+    historyClear: '全部清除',
+    questionLabel: '问题',
+    sampleAnswerLabel: '范例答案',
+    showSample: '显示答案',
+    hideSample: '隐藏答案',
   },
 };
 
