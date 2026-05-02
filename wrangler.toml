@@ -1,5 +1,13 @@
 name = "phlik-web"
 compatibility_date = "2026-04-01"
+workers_dev = true   # keep workers.dev URL alive too (old links in posts)
+
+# Custom domain — managed by Cloudflare for Workers (DNS auto-provisioned).
+# kasion.dev must already be on Cloudflare nameservers (it is — same account
+# as kasion-site).
+routes = [
+  { pattern = "phlik.kasion.dev", custom_domain = true },
+]
 
 [assets]
 directory = "./dist"
